@@ -5,7 +5,7 @@ import time
 
 athena_client = boto3.client('athena')
 
-DATABASE = 'wather_data_db'
+DATABASE = 'weather_data_db'
 TABLE = 'forecast_data'
 s3_OUTPUT = 's3://zaid-weather-etl-project/athena-query-result/'
 
@@ -32,7 +32,7 @@ def get_query_results(query_execution_id):
                 "date": row["Data"][0]["VarCharValue"],
                 "max_temp": row["Data"][1]["VarCharValue"],
                 "min_temp": row["Data"][2]["VarCharValue"],
-                "weather_condition": row["Data"][3]["VarCharValues"],
+                "weather_condition": row["Data"][3]["VarCharValue"],
             })
         return results
 
